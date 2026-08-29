@@ -73,9 +73,9 @@
     }
     
     /* ＝＝＝ カテゴリごとのふんわり色分け ＝＝＝ */
-    .cat-keyword { border-left-color: #d4a373; } /* 最重要：くすみオレンジ */
-    .cat-gyouhou { border-left-color: #7b9acc; } /* 業法：くすみブルー */
-    .cat-hourei  { border-left-color: #8cb38c; } /* 法令：くすみグリーン */
+    .cat-keyword { border-left-color: #7b9acc; } /* 最重要：くすみブルー */
+    .cat-gyouhou { border-left-color: #8cb38c; } /* 業法：くすみグリーン */
+    .cat-hourei  { border-left-color: #d4a373; } /* 法令：くすみオレンジ*/
     .cat-tax     { border-left-color: #b38cb3; } /* 税：くすみパープル */
     .cat-kenri   { border-left-color: #d48989; } /* 権利：くすみレッド */
 
@@ -186,9 +186,9 @@
   <script>
     // ＝＝＝ カテゴリの定義と色の設定 ＝＝＝
     const categoriesInfo = [
-      { id: "宅建最重要キーワード", class: "cat-keyword", color: "#d4a373" },
-      { id: "宅建業法", class: "cat-gyouhou", color: "#7b9acc" },
-      { id: "法令上の制限", class: "cat-hourei", color: "#8cb38c" },
+      { id: "宅建最重要キーワード", class: "cat-keyword", color: "#7b9acc" },
+      { id: "宅建業法", class: "cat-gyouhou", color: "#8cb38c" },
+      { id: "法令上の制限", class: "cat-hourei", color: "#d4a373" },
       { id: "税その他", class: "cat-tax", color: "#b38cb3" },
       { id: "権利関係", class: "cat-kenri", color: "#d48989" }
     ];
@@ -263,6 +263,21 @@
         category: "宅建最重要キーワード",
         meaning: "〜できる＝「任意（やらなくてもいい）」。〜しなければならない＝「義務（絶対にやれ）」。",
         tags: ["引っかけ"]
+      },
+　    {
+        term: "公告",
+        ruby: "こうこく・公の発表",
+        category: "宅建最重要キーワード",
+        meaning: "国や役所が、一般市民に向けて「この重要な事実を全員知っておけよ！」と公式（官報など）にお知らせすること。",
+        details: `
+          <h4>【ルールの発動スイッチ】</h4>
+          <ul>
+            <li><strong>都市計画法：</strong> 工事完了の公告（建築解禁の合図）や、都市計画決定の公告など。</li>
+            <li><strong>宅建業法：</strong> 不動産屋が廃業する際の「営業保証金の取り戻し公告」など。</li>
+          </ul>
+          <div class="exam-point"><strong>【営業保証金の無公告・特例】</strong><br>原則6ヶ月以上の公告が必要やけど、【①保証協会へ加入した時】【②移転で二重に供託した古い方】【③10年経過した時】の3つだけは、無公告で即回収できる！</div>
+        `,
+        tags: ["基本用語", "宅建業法", "法令上の制限"]
       },
 
       // ＝＝＝ 【権利関係】 ＝＝＝
@@ -464,6 +479,24 @@
         category: "宅建業法",
         meaning: "登録＝宅建士として名簿に名前を載せること（個人向け）。免許＝不動産屋として営業するための許可（業者向け）。",
         tags: ["手続き"]
+      },
+    　{
+        term: "広告",
+        ruby: "こうこく・宣伝チラシ",
+        category: "宅建業法",
+        meaning: "不動産屋がお客さんを集めるために出す宣伝やチラシ、ネット掲載のこと。",
+        details: `
+          <h4>【広告開始時期の制限】</h4>
+          <ul>
+            <li>未完成の物件（これから建てる家やマンション）は、役所の許可が下りるまで広告を出してはいけない絶対ルールがある。</li>
+          </ul>
+          <h4>【おとり広告の禁止】</h4>
+          <ul>
+            <li>実際には存在しない物件や、売る気のない優良物件を客寄せのために載せる行為。重いペナルティ（業務停止処分など）の対象。</li>
+          </ul>
+          <div class="exam-point"><strong>【よく出る引っかけ】</strong><br>「建築確認」や「開発許可」が下りる前は、広告を出すことも、契約を結ぶことも一切禁止！「現在、許可申請中」と書いてもアウトやで！（見切り発車NG）</div>
+        `,
+        tags: ["8種制限", "実務の裏側"]
       },
       {
         term: "35条書面",
