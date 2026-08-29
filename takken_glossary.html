@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>俺の宅建辞典</title>
+  <style>
+    /* スマホファーストのシンプルでモダンなデザイン */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Meiryo", sans-serif;
+      background-color: #f7f6f5; /* 少し温かみのあるオフホワイトに変更 */
+      color: #4a4a4a; /* 文字色も少し柔らかいグレーに */
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #5a544d; /* メインカラー：落ち着いたブラウングレー */
+      color: white;
+      padding: 15px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    h1 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+    .search-container {
+      padding: 15px;
+      background-color: white;
+      border-bottom: 1px solid #ddd;
+      position: sticky;
+      top: 50px;
+      z-index: 99;
+    }
+    #searchInput {
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-sizing: border-box;
+      outline: none;
+    }
+    #searchInput:focus {
+      border-color: #5a544d; /* フォーカス時の色もブラウングレーに */
+      box-shadow: 0 0 5px rgba(90, 84, 77, 0.3);
+    }
+    .card-container {
+      padding: 15px;
+      padding-bottom: 80px;
+    }
+    .card {
+      background-color: white;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      border-left: 5px solid #5a544d; /* カードの左端の線 */
+    }
+    .term {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #5a544d; /* 見出しの色 */
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+    .meaning {
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    .trap {
+      background-color: #fff3f3;
+      border-left: 3px solid #d9534f;
+      padding: 8px 10px;
+      font-size: 0.9rem;
+      color: #c9302c;
+      margin-bottom: 10px;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .tag {
+      background-color: #e2e1de; /* タグの背景も少しグレーベージュに */
+      color: #5a544d;
+      font-size: 0.75rem;
+      padding: 3px 8px;
+      border-radius: 12px;
+    }
+    .no-result {
+      text-align: center;
+      color: #777;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>宅建辞典</h1>
+  </header>
+
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="用語、意味、タグで検索...">
+  </div>
+
+  <div class="card-container" id="dictionaryList">
+    <!-- ここにJavaScriptでカードが自動生成されます -->
+  </div>
+
+  <script>
+    // ▼▼▼ ここに宅建の用語を追加していく ▼▼▼
+    const dictionaryData = [
+      {
+        term: "35条書面（重要事項説明）",
+        meaning: "契約を結ぶ前に、物件や取引の重要事項を借主・買主に説明するための書面。",
+        trap: "「専任じゃない宅建士でもOK」は×！説明するのは誰でもいいわけではなく、必ず宅建士が行う必要がある。",
+        tags: ["宅建業法", "最重要"]
+      },
+      {
+        term: "法定地上権",
+        meaning: "土地と建物が同じオーナーだったのに、抵当権の実行（競売）によってオーナーがバラバラになってしまった時、建物を守るために自動的に発生する権利。",
+        trap: "抵当権を設定した「一番最初の時点」で、土地と建物の所有者が同じだったかどうかが最大の引っかけポイント！",
+        tags: ["権利関係", "民法"]
+      },
+      {
+        term: "報酬額の限度（特例）",
+        meaning: "800万円以下の低廉な空家等の売買において、通常の計算式を無視して上限30万円まで受領できる特例。",
+        trap: "「事前にお客さんの合意を得ずに請求した」は×！必ず事前に説明して合意を得ないと特例は使えない。",
+        tags: ["宅建業法", "2024年改正"]
+      }
+    ];
+    // ▲▲▲ 用語データここまで ▲▲▲
+
+    const searchInput = document.getElementById('searchInput');
+    const dictionaryList = document.getElementById('dictionaryList');
+
+    function renderCards(data) {
+      dictionaryList.innerHTML = ''; 
+      
+      if (data.length === 0) {
+        dictionaryList.innerHTML = '<div class="no-result">見つかりませんでした(´・ω・`)</div>';
+        return;
+      }
+
+      data.forEach(item => {
+        const tagsHtml = item.tags.map(tag => `<span class="tag">#${tag}</span>`).join('');
+        const trapHtml = item.trap ? `<div class="trap"><strong>⚠️ 試験の罠：</strong>${item.trap}</div>` : '';
+
+        const cardHtml = `
+          <div class="card">
+            <h2 class="term">${item.term}</h2>
+            <div class="meaning">${item.meaning}</div>
+            ${trapHtml}
+            <div class="tags">${tagsHtml}</div>
+          </div>
+        `;
+        dictionaryList.innerHTML += cardHtml;
+      });
+    }
+
+    searchInput.addEventListener('input', (e) => {
+      const keyword = e.target.value.toLowerCase(); 
+      
+      const filteredData = dictionaryData.filter(item => {
+        return item.term.toLowerCase().includes(keyword) || 
+               item.meaning.toLowerCase().includes(keyword) ||
+               (item.trap && item.trap.toLowerCase().includes(keyword)) ||
+               item.tags.some(tag => tag.toLowerCase().includes(keyword));
+      });
+      
+      renderCards(filteredData);
+    });
+
+    renderCards(dictionaryData);
+  </script>
+
+</body>
+</html>
