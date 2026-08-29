@@ -600,7 +600,7 @@
       const keyword = e.target.value.toLowerCase(); 
       
       // 全角スペースを半角スペースに変換して分割（複数キーワード対応）
-      const keywords = keyword.replace(/ /g, ' ').split(' ').filter(kw => kw.trim() !== '');
+      const keywords = keyword.replace(/ /g, ' ').split('　').filter(kw => kw.trim() !== '');
 
       const filteredData = dictionaryData.filter(item => {
         // すべての検索キーワードが含まれているかチェック（AND検索）
