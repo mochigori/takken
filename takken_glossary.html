@@ -5,16 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>俺の宅建辞典</title>
   <style>
-    /* スマホファーストのシンプルでモダンなデザイン */
+    /* ＝＝＝ 基本設定 ＝＝＝ */
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Meiryo", sans-serif;
-      background-color: #f7f6f5; /* 少し温かみのあるオフホワイトに変更 */
-      color: #4a4a4a; /* 文字色も少し柔らかいグレーに */
+      background-color: #f7f6f5; /* 温かみのあるオフホワイト */
+      color: #4a4a4a;
       margin: 0;
       padding: 0;
     }
     header {
-      background-color: #5a544d; /* メインカラー：落ち着いたブラウングレー */
+      background-color: #5a544d; /* ブラウングレー */
       color: white;
       padding: 15px;
       text-align: center;
@@ -27,6 +27,8 @@
       margin: 0;
       font-size: 1.2rem;
     }
+    
+    /* ＝＝＝ 検索窓 ＝＝＝ */
     .search-container {
       padding: 15px;
       background-color: white;
@@ -45,12 +47,21 @@
       outline: none;
     }
     #searchInput:focus {
-      border-color: #5a544d; /* フォーカス時の色もブラウングレーに */
+      border-color: #5a544d;
       box-shadow: 0 0 5px rgba(90, 84, 77, 0.3);
     }
+
+    /* ＝＝＝ カード全体 ＝＝＝ */
     .card-container {
       padding: 15px;
       padding-bottom: 80px;
+    }
+    .category-title {
+      font-size: 1.1rem;
+      color: #5a544d;
+      margin-top: 25px;
+      margin-bottom: 10px;
+      padding-bottom: 5px;
     }
     .card {
       background-color: white;
@@ -58,35 +69,94 @@
       padding: 15px;
       margin-bottom: 15px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-      border-left: 5px solid #5a544d; /* カードの左端の線 */
+      border-left: 6px solid #ccc; /* デフォルト色（JSで上書きされます） */
     }
+    
+    /* ＝＝＝ カテゴリごとのふんわり色分け ＝＝＝ */
+    .cat-keyword { border-left-color: #d4a373; } /* 最重要：くすみオレンジ */
+    .cat-gyouhou { border-left-color: #7b9acc; } /* 業法：くすみブルー */
+    .cat-hourei  { border-left-color: #8cb38c; } /* 法令：くすみグリーン */
+    .cat-tax     { border-left-color: #b38cb3; } /* 税：くすみパープル */
+    .cat-kenri   { border-left-color: #d48989; } /* 権利：くすみレッド */
+
+    /* ＝＝＝ テキスト周り ＝＝＝ */
     .term {
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       font-weight: bold;
-      color: #5a544d; /* 見出しの色 */
+      color: #333;
       margin-top: 0;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
+    }
+    .ruby-text {
+      font-size: 0.75rem;
+      color: #888;
+      font-weight: normal;
     }
     .meaning {
       font-size: 0.95rem;
       margin-bottom: 10px;
       line-height: 1.5;
+      color: #555;
     }
-    .trap {
-      background-color: #fff3f3;
-      border-left: 3px solid #d9534f;
-      padding: 8px 10px;
-      font-size: 0.9rem;
-      color: #c9302c;
+
+    /* ＝＝＝ 詳細アコーディオン（詳しく見る） ＝＝＝ */
+    details.more-details {
+      background: #fbfbfb;
+      border: 1px solid #eee;
+      border-radius: 6px;
       margin-bottom: 10px;
     }
+    details.more-details summary {
+      padding: 10px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: #5a544d;
+      list-style: none;
+      position: relative;
+    }
+    details.more-details summary::-webkit-details-marker { display: none; }
+    details.more-details summary::after {
+      content: '▼';
+      position: absolute;
+      right: 15px;
+      color: #999;
+    }
+    details.more-details[open] summary::after {
+      content: '▲';
+    }
+    .details-content {
+      padding: 15px;
+      border-top: 1px dashed #ddd;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    .details-content h4 {
+      color: #5a544d;
+      margin: 10px 0 5px 0;
+      font-size: 0.95rem;
+      border-bottom: 1px solid #ddd;
+    }
+    .details-content h4:first-child { margin-top: 0; }
+    .details-content ul { padding-left: 20px; margin-bottom: 10px; }
+    
+    .exam-point {
+      background: #fff8e1; /* 薄い黄色 */
+      padding: 10px;
+      border-radius: 4px;
+      border-left: 3px solid #f4c20d;
+      font-size: 0.85rem;
+      margin-top: 10px;
+    }
+
+    /* ＝＝＝ タグとその他 ＝＝＝ */
     .tags {
       display: flex;
       flex-wrap: wrap;
       gap: 5px;
     }
     .tag {
-      background-color: #e2e1de; /* タグの背景も少しグレーベージュに */
+      background-color: #e2e1de;
       color: #5a544d;
       font-size: 0.75rem;
       padding: 3px 8px;
@@ -102,7 +172,7 @@
 <body>
 
   <header>
-    <h1>宅建辞典</h1>
+    <h1>俺の宅建辞典</h1>
   </header>
 
   <div class="search-container">
@@ -110,29 +180,148 @@
   </div>
 
   <div class="card-container" id="dictionaryList">
-    <!-- ここにJavaScriptでカードが自動生成されます -->
+    <!-- ここにJSでカテゴリごとに出力されます -->
   </div>
 
   <script>
+    // ＝＝＝ カテゴリの定義と色の設定 ＝＝＝
+    const categoriesInfo = [
+      { id: "宅建最重要キーワード", class: "cat-keyword", color: "#d4a373" },
+      { id: "宅建業法", class: "cat-gyouhou", color: "#7b9acc" },
+      { id: "法令上の制限", class: "cat-hourei", color: "#8cb38c" },
+      { id: "税その他", class: "cat-tax", color: "#b38cb3" },
+      { id: "権利関係", class: "cat-kenri", color: "#d48989" }
+    ];
+
     // ▼▼▼ ここに宅建の用語を追加していく ▼▼▼
     const dictionaryData = [
+      // --- 【宅建最重要キーワード】 ---
       {
-        term: "35条書面（重要事項説明）",
-        meaning: "契約を結ぶ前に、物件や取引の重要事項を借主・買主に説明するための書面。",
-        trap: "「専任じゃない宅建士でもOK」は×！説明するのは誰でもいいわけではなく、必ず宅建士が行う必要がある。",
-        tags: ["宅建業法", "最重要"]
+        term: "善意 / 悪意",
+        ruby: "ぜんい / あくい",
+        category: "宅建最重要キーワード",
+        meaning: "善意＝「知らない」、悪意＝「知っている」こと。",
+        details: `
+          <h4>【法律上の意味】</h4>
+          <ul>
+            <li><strong>善意：</strong> ある事実を「知らない」こと。（道徳的に良い人という意味は一切ない）</li>
+            <li><strong>悪意：</strong> ある事実を「知っている」こと。（悪巧みをしているという意味は一切ない）</li>
+          </ul>
+        `,
+        tags: ["基本用語", "民法"]
       },
       {
-        term: "法定地上権",
-        meaning: "土地と建物が同じオーナーだったのに、抵当権の実行（競売）によってオーナーがバラバラになってしまった時、建物を守るために自動的に発生する権利。",
-        trap: "抵当権を設定した「一番最初の時点」で、土地と建物の所有者が同じだったかどうかが最大の引っかけポイント！",
-        tags: ["権利関係", "民法"]
+        term: "対抗",
+        ruby: "たいこう",
+        category: "宅建最重要キーワード",
+        meaning: "「これは俺のものだ！」と第三者に主張すること。",
+        details: `
+          <h4>【対抗要件とは？】</h4>
+          <ul>
+            <li>第三者に自分の権利を主張するための「武器」のこと。</li>
+            <li>不動産（土地や建物）の場合、最強の武器は<strong>「登記（とうき）」</strong>です。</li>
+          </ul>
+        `,
+        tags: ["二重譲渡", "登記"]
+      },
+
+      // --- 【権利関係】 ---
+      {
+        term: "物上保証人",
+        ruby: "ぶつじょうほしょうにん",
+        category: "権利関係",
+        meaning: "他人の借金のために、自分の家をカタに入れた人。",
+        details: `
+          <h4>【特徴とルール】</h4>
+          <ul>
+            <li>「自分の不動産を担保に差し出しているだけ」なので、連帯保証人のように<strong>借金そのものを直接返す義務（債務）はありません</strong>。</li>
+            <li>借金が返されなかった場合、家は競売にかけられて失いますが、それ以上の支払い義務は負いません。</li>
+          </ul>
+        `,
+        tags: ["抵当権"]
       },
       {
-        term: "報酬額の限度（特例）",
-        meaning: "800万円以下の低廉な空家等の売買において、通常の計算式を無視して上限30万円まで受領できる特例。",
-        trap: "「事前にお客さんの合意を得ずに請求した」は×！必ず事前に説明して合意を得ないと特例は使えない。",
-        tags: ["宅建業法", "2024年改正"]
+        term: "契約不適合責任",
+        ruby: "旧・瑕疵担保責任",
+        category: "権利関係",
+        meaning: "買った物が約束と違った状態に対する責任。",
+        details: `
+          <h4>【適用条件・買主の武器】</h4>
+          買った物に欠陥（雨漏り、シロアリなど）があった場合、買主は以下の請求ができます。
+          <ul>
+            <li><strong>追完請求：</strong> 直して！不足分ちょうだい！</li>
+            <li><strong>代金減額請求：</strong> 直さないなら安くして！</li>
+            <li><strong>契約解除：</strong> もういらない、契約白紙！</li>
+            <li><strong>損害賠償請求：</strong> 損した分のお金払って！</li>
+          </ul>
+          <div class="exam-point"><strong>【期間制限の罠】</strong><br>不適合を知った時から「1年以内」に売主に通知しないと権利を失う！</div>
+        `,
+        tags: ["契約", "買主保護"]
+      },
+
+      // --- 【宅建業法】 ---
+      {
+        term: "クーリング・オフ",
+        ruby: "",
+        category: "宅建業法",
+        meaning: "勢いで買ってしまった客を守るため、一定期間内なら無条件で契約解除できる制度。",
+        details: `
+          <h4>【適用される条件】</h4>
+          <ul>
+            <li>売主が宅建業者（プロ）で、買主が素人であること。</li>
+            <li>契約場所が「事務所等」以外であること。（喫茶店や突然の自宅訪問など）</li>
+            <li>書面で告げられた日から「8日以内」であること。</li>
+          </ul>
+          <div class="exam-point">解除は「必ず書面（または電磁的記録）」で行う！口頭は無効。</div>
+        `,
+        tags: ["8種制限", "自ら売主"]
+      },
+      {
+        term: "35条書面",
+        ruby: "重要事項説明・重説",
+        category: "宅建業法",
+        meaning: "契約の前に、物件の条件・リスクを客に説明するための書面。",
+        details: `
+          <h4>【基本ルール】</h4>
+          <ul>
+            <li><strong>タイミング：</strong> 契約が成立する「前」</li>
+            <li><strong>説明する人：</strong> 必ず「宅建士」</li>
+          </ul>
+          <div class="exam-point">相手から求められなくても、説明時は必ず「宅建士証」を提示すること！</div>
+        `,
+        tags: ["重説", "宅建士"]
+      },
+
+      // --- 【法令上の制限】 ---
+      {
+        term: "建ぺい率 / 容積率",
+        ruby: "けんぺいりつ / ようせきりつ",
+        category: "法令上の制限",
+        meaning: "土地に対する建物の広さ（建ぺい）と、床面積の合計（容積）の割合。",
+        details: `
+          <h4>【建ぺい率の緩和（オマケ）ルール】</h4>
+          <ul>
+            <li><strong>角地緩和：</strong> 特定行政庁が指定した角地（＋10%）</li>
+            <li><strong>防火地域緩和：</strong> 防火地域内に耐火建築物（＋10%）</li>
+          </ul>
+          ※両方を満たせば「＋20%」になる！
+        `,
+        tags: ["都市計画法", "建築基準法"]
+      },
+
+      // --- 【税その他】 ---
+      {
+        term: "印紙税",
+        ruby: "いんしぜい",
+        category: "税その他",
+        meaning: "不動産の売買契約書など、特定の文書を作成したときに国に納める税金。",
+        details: `
+          <h4>【ポイント】</h4>
+          <ul>
+            <li>契約書を2通作って、売主と買主が1通ずつ保管する場合、<strong>2通とも</strong>印紙を貼る必要がある。</li>
+          </ul>
+        `,
+        tags: ["国税"]
       }
     ];
     // ▲▲▲ 用語データここまで ▲▲▲
@@ -140,6 +329,7 @@
     const searchInput = document.getElementById('searchInput');
     const dictionaryList = document.getElementById('dictionaryList');
 
+    // カードを描画する関数
     function renderCards(data) {
       dictionaryList.innerHTML = ''; 
       
@@ -148,35 +338,69 @@
         return;
       }
 
-      data.forEach(item => {
-        const tagsHtml = item.tags.map(tag => `<span class="tag">#${tag}</span>`).join('');
-        const trapHtml = item.trap ? `<div class="trap"><strong>⚠️ 試験の罠：</strong>${item.trap}</div>` : '';
+      // カテゴリごとにループして表示
+      categoriesInfo.forEach(catInfo => {
+        // このカテゴリに属する用語だけを抽出
+        const itemsInCategory = data.filter(item => item.category === catInfo.id);
+        
+        // 該当する用語が1つでもあれば、見出しとカードを描画
+        if (itemsInCategory.length > 0) {
+          // カテゴリ見出し
+          dictionaryList.innerHTML += `<h2 class="category-title" style="border-bottom: 2px solid ${catInfo.color};">${catInfo.id}</h2>`;
+          
+          // カードの生成
+          itemsInCategory.forEach(item => {
+            const rubyHtml = item.ruby ? `<span class="ruby-text">（${item.ruby}）</span>` : '';
+            const tagsHtml = item.tags ? item.tags.map(tag => `<span class="tag">#${tag}</span>`).join('') : '';
+            
+            // 詳細（details）がある場合のみアコーディオンを作成
+            let detailsHtml = '';
+            if (item.details) {
+              detailsHtml = `
+                <details class="more-details">
+                  <summary>詳しく見る</summary>
+                  <div class="details-content">${item.details}</div>
+                </details>
+              `;
+            }
 
-        const cardHtml = `
-          <div class="card">
-            <h2 class="term">${item.term}</h2>
-            <div class="meaning">${item.meaning}</div>
-            ${trapHtml}
-            <div class="tags">${tagsHtml}</div>
-          </div>
-        `;
-        dictionaryList.innerHTML += cardHtml;
+            const cardHtml = `
+              <div class="card ${catInfo.class}">
+                <h3 class="term">${item.term} ${rubyHtml}</h3>
+                <div class="meaning">${item.meaning}</div>
+                ${detailsHtml}
+                <div class="tags">${tagsHtml}</div>
+              </div>
+            `;
+            dictionaryList.innerHTML += cardHtml;
+          });
+        }
       });
     }
 
+    // 検索処理
     searchInput.addEventListener('input', (e) => {
       const keyword = e.target.value.toLowerCase(); 
       
+      // 全角スペースを半角スペースに変換して分割（複数キーワード対応）
+      const keywords = keyword.replace(/ /g, ' ').split(' ').filter(kw => kw.trim() !== '');
+
       const filteredData = dictionaryData.filter(item => {
-        return item.term.toLowerCase().includes(keyword) || 
-               item.meaning.toLowerCase().includes(keyword) ||
-               (item.trap && item.trap.toLowerCase().includes(keyword)) ||
-               item.tags.some(tag => tag.toLowerCase().includes(keyword));
+        // すべての検索キーワードが含まれているかチェック（AND検索）
+        return keywords.every(kw => {
+          return item.term.toLowerCase().includes(kw) || 
+                 (item.ruby && item.ruby.toLowerCase().includes(kw)) ||
+                 item.meaning.toLowerCase().includes(kw) ||
+                 (item.details && item.details.toLowerCase().includes(kw)) ||
+                 item.category.toLowerCase().includes(kw) ||
+                 (item.tags && item.tags.some(tag => tag.toLowerCase().includes(kw)));
+        });
       });
       
       renderCards(filteredData);
     });
 
+    // 初期表示
     renderCards(dictionaryData);
   </script>
 
