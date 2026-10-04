@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>もっちり宅建・特設まとめ</title>
+  <style>
+    /* 辞典と同じ基本テイストを踏襲 */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Meiryo", sans-serif;
+      background-color: #f7f6f5;
+      color: #4a4a4a;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #5a544d;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.2rem;
+      flex-grow: 1;
+    }
+    .back-link {
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.9rem;
+      background: rgba(255,255,255,0.2);
+      padding: 5px 10px;
+      border-radius: 4px;
+    }
+    .back-link:hover { background: rgba(255,255,255,0.3); }
+
+    .container { padding: 15px; padding-bottom: 80px; max-width: 800px; margin: auto; }
+    
+    .section-title {
+      font-size: 1.3rem;
+      color: #5a544d;
+      margin-top: 30px;
+      border-bottom: 3px solid #8cb38c; /* 業法カラー */
+      padding-bottom: 5px;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      border-top: 6px solid #8cb38c;
+    }
+    
+    h3 { margin-top: 0; color: #333; font-size: 1.2rem; border-bottom: 1px dashed #ccc; padding-bottom: 10px; }
+    h4 { color: #d48989; margin-bottom: 5px; }
+    ul { padding-left: 20px; line-height: 1.6; }
+    li { margin-bottom: 10px; }
+    
+    .trap-box {
+      background: #fff8e1;
+      padding: 12px;
+      border-radius: 4px;
+      border-left: 4px solid #f4c20d;
+      font-size: 0.9rem;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    /* 比較テーブル用デザイン */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+      font-size: 0.9rem;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+    th { background-color: #f0f0f0; color: #333; }
+    .td-35 { background-color: #e8f4f8; }
+    .td-37 { background-color: #f9f0e8; }
+    .req { color: #d48989; font-weight: bold; } /* 必要 */
+    .noreq { color: #888; } /* 不要 */
+  </style>
+</head>
+<body>
+
+  <header>
+    <!-- 辞典（takken_glossary.html）へのリンク -->
+    <a href="takken_glossary.html" class="back-link">◀ 辞典に戻る</a>
+    <h1>特設：宅建業法マスター</h1>
+    <div style="width: 80px;"></div> <!-- レイアウト調整用 -->
+  </header>
+
+  <div class="container">
+    
+    <!-- ＝＝＝ 8種制限 ＝＝＝ -->
+    <h2 class="section-title">自ら売主の8種制限（総まとめ）</h2>
+    <p>業者が売主・素人が買主の場合のみ発動！業者間取引は適用外！<br>
+    <b>★大前提：買主に不利な特約はすべて無効！★</b></p>
+
+    <div class="card">
+      <h3>1. 手付金等の保全措置</h3>
+      <ul>
+        <li>受領前に保証をかける義務。</li>
+        <li><b>【不要なライン（超えたらアウト）】</b><br>
+        ・未完成：代金の5%以下かつ1000万円以下<br>
+        ・完成：代金の10%以下かつ1000万円以下</li>
+      </ul>
+      <div class="trap-box">●罠：受領後に保全措置をした → 遅い！アウト！</div>
+    </div>
+
+    <div class="card">
+      <h3>2. クーリング・オフ</h3>
+      <ul>
+        <li>「事務所等以外（喫茶店・テント等）」での契約は無条件解除可能。</li>
+        <li>事務所や、買主が自ら指定した自宅・勤務先は解除不可。</li>
+      </ul>
+      <div class="trap-box">●罠：買主が喫茶店を指定した → 解除できる！（自宅と勤務先以外は解除可）</div>
+    </div>
+
+    <div class="card">
+      <h3>3 ・ 4. 手付金の額 / 損害賠償額の制限</h3>
+      <ul>
+        <li><b>手付金：</b>受領できる手付金は代金の「2割（20%）」が上限。</li>
+        <li><b>損害賠償額の予定：</b>違約金や損害賠償の予定額を定める場合、合算して代金の「2割（20%）」が上限。</li>
+      </ul>
+      <div class="trap-box">●罠：2割を超えて受け取った場合、「超えた部分のみが無効」となる（全額無効ではない）！</div>
+    </div>
+
+    <div class="card">
+      <h3>5. 契約不適合責任の特約の制限</h3>
+      <ul>
+        <li>唯一許される特約：「引渡しの日から2年以上」。これより買主に不利な特約は無効。</li>
+      </ul>
+      <div class="trap-box">●罠：特約が無効になると、宅建業法の2年に直されるのではなく、「民法の原則（知ってから1年）」に強制リセット！</div>
+    </div>
+
+    <div class="card">
+      <h3>6. 他人物売買の制限</h3>
+      <ul>
+        <li>まだ自分のモノじゃない物件は売ってはいけない。</li>
+        <li>例外として、元の所有者と「取得する契約」を結んでいればOK。</li>
+      </ul>
+      <div class="trap-box">●罠：「条件付き（転勤になったら買う等）」の取得契約では例外として認められずアウト！</div>
+    </div>
+
+    <div class="card">
+      <h3>7. 割賦販売契約の解除等の制限</h3>
+      <ul>
+        <li>分割払いの遅延で解除する場合、必ず「30日以上の期間を定めて、書面で催告」しなければならない。</li>
+      </ul>
+      <div class="trap-box">●罠：「ただちに解除できる」という特約は無効！</div>
+    </div>
+
+    <div class="card">
+      <h3>8. 所有権留保等の禁止</h3>
+      <ul>
+        <li>代金の「10分の3（30%）」を超える額を受け取ったら、業者は買主に所有権登記を移転しなければならない。</li>
+      </ul>
+      <div class="trap-box">●罠：買主が残りの代金の担保を提供しない場合は、移転しなくてセーフ（例外）。</div>
+    </div>
+
+    <!-- ＝＝＝ 35条・37条の比較 ＝＝＝ -->
+    <h2 class="section-title" style="border-bottom-color: #d4a373;">35条書面（重説） vs 37条書面（契約書） 比較マスター</h2>
+    <p><b>【本質の理解】</b><br>
+    35条は契約前の「警告（リスク説明）」。37条は契約後の「証拠（言った言わないの防止）」。</p>
+
+    <div class="card" style="border-top-color: #d4a373;">
+      <h3>お金と時期の絶対ルール</h3>
+      <table>
+        <tr>
+          <th>項目</th>
+          <th class="td-35">35条（契約前の警告）</th>
+          <th class="td-37">37条（契約後の証拠）</th>
+        </tr>
+        <tr>
+          <td><b>代金・交換差金・借賃の額</b></td>
+          <td class="td-35"><span class="noreq">不要</span><br><small>（チラシ見て知ってる大前提）</small></td>
+          <td class="td-37"><span class="req">絶対必要</span><br><small>（いくらか揉めるから証拠必須）</small></td>
+        </tr>
+        <tr>
+          <td><b>代金「以外」の金銭</b><br><small>（手付金・管理費など）</small></td>
+          <td class="td-35"><span class="req">絶対必要</span><br><small>（客の想定外の隠れコスト・リスク）</small></td>
+          <td class="td-37"><span class="req">定めがあれば必要</span><br><small>（動くお金の証拠）</small></td>
+        </tr>
+        <tr>
+          <td><b>代金の支払時期・引渡時期</b></td>
+          <td class="td-35"><span class="noreq">不要</span><br><small>（物件の価値・ヤバさには無関係）</small></td>
+          <td class="td-37"><span class="req">絶対必要</span><br><small>（いつ払うかは最重要の約束）</small></td>
+        </tr>
+        <tr>
+          <td><b>移転登記の申請時期</b></td>
+          <td class="td-35"><span class="noreq">不要</span><br><small>（スケジュールの話）</small></td>
+          <td class="td-37"><span class="req">絶対必要</span><br><small>（名義変更のタイミングは超重要）</small></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="card" style="border-top-color: #d4a373;">
+      <h3>トラブル対応のルール</h3>
+      <table>
+        <tr>
+          <th>項目</th>
+          <th class="td-35">35条（契約前の警告）</th>
+          <th class="td-37">37条（契約後の証拠）</th>
+        </tr>
+        <tr>
+          <td><b>契約の解除に関する事項</b></td>
+          <td class="td-35"><span class="req">絶対必要</span><br><small>（「これやったら解除されますよ」という警告）</small></td>
+          <td class="td-37"><span class="req">定めがあれば必要</span><br><small>（特約があれば揉めないよう証拠にする）</small></td>
+        </tr>
+        <tr>
+          <td><b>損害賠償額の予定・違約金</b></td>
+          <td class="td-35"><span class="req">絶対必要</span><br><small>（「やらかしたらこれだけ払わされますよ」という警告）</small></td>
+          <td class="td-37"><span class="req">定めがあれば必要</span><br><small>（特約があれば証拠にする）</small></td>
+        </tr>
+        <tr>
+          <td><b>天災で家が燃えた時の負担</b><br><small>（危険負担）</small></td>
+          <td class="td-35"><span class="noreq">不要</span><br><small>（滅多に起きないから警告不要）</small></td>
+          <td class="td-37"><span class="req">定めがあれば必要</span><br><small>（万一のトラブル時の証拠）</small></td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+</body>
+</html>
